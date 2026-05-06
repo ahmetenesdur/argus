@@ -10,8 +10,9 @@ import SwiftUI
 @main
 struct ArgusApp: App {
     var body: some Scene {
-        WindowGroup {
+        MenuBarExtra("Argus", systemImage: "eye") {
             ContentView()
         }
+        .menuBarExtraStyle(.window)
     }
 }
