@@ -1,0 +1,35 @@
+# macOS
+.DS_Store
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM
+*.dSYM.zip
+
+# Swift Package Manager
+.build/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Environment & secrets
+.env
+.env.local
+*.p12
+*.cer
+*.mobileprovision
+
+# Local PoC scratch
+argus-test.log
