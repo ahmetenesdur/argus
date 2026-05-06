@@ -6,6 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		22CD74A32FAB5B95008F3326 /* argusd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 223389F12FAB17180091288C /* argusd */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		225F84282FAB57FE004127E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22505D892FAB10D100393EFF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 223389F02FAB17180091288C;
+			remoteInfo = argusd;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		223389EF2FAB17180091288C /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -16,6 +30,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		225F842B2FAB59D4004127E8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LaunchDaemons;
+			dstSubfolderSpec = 1;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22CD74A22FAB5B5A008F3326 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 6;
+			files = (
+				22CD74A32FAB5B95008F3326 /* argusd in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -23,9 +56,22 @@
 		22505D912FAB10D100393EFF /* Argus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Argus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		225F842D2FAB5A11004127E8 /* Exceptions for "argusd" folder in "Copy Files" phase from "Argus" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 225F842B2FAB59D4004127E8 /* CopyFiles */;
+			membershipExceptions = (
+				com.ahmetenesdur.Argus.argusd.plist,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		223389F22FAB17180091288C /* argusd */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				225F842D2FAB5A11004127E8 /* Exceptions for "argusd" folder in "Copy Files" phase from "Argus" target */,
+			);
 			path = argusd;
 			sourceTree = "<group>";
 		};
@@ -104,10 +150,13 @@
 				22505D8D2FAB10D100393EFF /* Sources */,
 				22505D8E2FAB10D100393EFF /* Frameworks */,
 				22505D8F2FAB10D100393EFF /* Resources */,
+				225F842B2FAB59D4004127E8 /* CopyFiles */,
+				22CD74A22FAB5B5A008F3326 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				225F84292FAB57FE004127E8 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				22505D932FAB10D100393EFF /* Argus */,
@@ -183,6 +232,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		225F84292FAB57FE004127E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 223389F02FAB17180091288C /* argusd */;
+			targetProxy = 225F84282FAB57FE004127E8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		223389F52FAB17180091288C /* Debug */ = {
