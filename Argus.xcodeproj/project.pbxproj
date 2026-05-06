@@ -6,11 +6,29 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXCopyFilesBuildPhase section */
+		223389EF2FAB17180091288C /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		223389F12FAB17180091288C /* argusd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = argusd; sourceTree = BUILT_PRODUCTS_DIR; };
 		22505D912FAB10D100393EFF /* Argus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Argus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		223389F22FAB17180091288C /* argusd */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = argusd;
+			sourceTree = "<group>";
+		};
 		22505D932FAB10D100393EFF /* Argus */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Argus;
@@ -19,6 +37,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		223389EE2FAB17180091288C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		22505D8E2FAB10D100393EFF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				22505D932FAB10D100393EFF /* Argus */,
+				223389F22FAB17180091288C /* argusd */,
 				22505D922FAB10D100393EFF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				22505D912FAB10D100393EFF /* Argus.app */,
+				223389F12FAB17180091288C /* argusd */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +75,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		223389F02FAB17180091288C /* argusd */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 223389F72FAB17180091288C /* Build configuration list for PBXNativeTarget "argusd" */;
+			buildPhases = (
+				223389ED2FAB17180091288C /* Sources */,
+				223389EE2FAB17180091288C /* Frameworks */,
+				223389EF2FAB17180091288C /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				223389F22FAB17180091288C /* argusd */,
+			);
+			name = argusd;
+			packageProductDependencies = (
+			);
+			productName = argusd;
+			productReference = 223389F12FAB17180091288C /* argusd */;
+			productType = "com.apple.product-type.tool";
+		};
 		22505D902FAB10D100393EFF /* Argus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 22505D9C2FAB10D200393EFF /* Build configuration list for PBXNativeTarget "Argus" */;
@@ -80,6 +129,9 @@
 				LastSwiftUpdateCheck = 2640;
 				LastUpgradeCheck = 2640;
 				TargetAttributes = {
+					223389F02FAB17180091288C = {
+						CreatedOnToolsVersion = 26.4.1;
+					};
 					22505D902FAB10D100393EFF = {
 						CreatedOnToolsVersion = 26.4.1;
 					};
@@ -100,6 +152,7 @@
 			projectRoot = "";
 			targets = (
 				22505D902FAB10D100393EFF /* Argus */,
+				223389F02FAB17180091288C /* argusd */,
 			);
 		};
 /* End PBXProject section */
@@ -115,6 +168,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		223389ED2FAB17180091288C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		22505D8D2FAB10D100393EFF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -125,6 +185,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		223389F52FAB17180091288C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmetenesdur.Argus.argusd;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		223389F62FAB17180091288C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmetenesdur.Argus.argusd;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		22505D9A2FAB10D200393EFF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -178,7 +264,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -235,7 +321,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -261,6 +347,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmetenesdur.Argus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -292,6 +379,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ahmetenesdur.Argus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -308,6 +396,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		223389F72FAB17180091288C /* Build configuration list for PBXNativeTarget "argusd" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				223389F52FAB17180091288C /* Debug */,
+				223389F62FAB17180091288C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		22505D8C2FAB10D100393EFF /* Build configuration list for PBXProject "Argus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
