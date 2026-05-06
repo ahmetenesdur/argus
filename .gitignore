@@ -33,3 +33,6 @@ xcuserdata/
 
 # Local PoC scratch
 argus-test.log
+
+.agents
+skills-lock.json
