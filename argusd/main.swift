@@ -2,13 +2,11 @@
 //  main.swift
 //  argusd
 //
-//  Argus helper daemon. On launch, sets `pmset disablesleep=1` (system-wide
-//  prevent sleep on lid close). On SIGTERM, restores `disablesleep=0` and
-//  exits cleanly.
-//
-//  This is the Faz 1.5 minimal proof: helper actually exercises pmset under
-//  root privileges. Faz 2 will replace the body with an NSXPCListener so the
-//  app can toggle on/off on demand.
+//  Argus helper daemon. Boots, restores the user's last toggle preference
+//  from StateStore, and (in Faz 3+) serves XPC requests from Argus.app.
+//  On SIGTERM it always restores `disablesleep=0` so that uninstall or
+//  `launchctl bootout` leaves the system in a clean state — regardless
+//  of the persisted preference.
 //
 
 import Dispatch
@@ -36,11 +34,23 @@ func runPmset(_ value: String) -> Int32 {
 
 log("starting (pid \(getpid()))")
 
-let setStatus = runPmset("1")
-log("set disablesleep=1 (exit \(setStatus))")
+let initialState = StateStore.load()
+log("loaded state: enabled=\(initialState.enabled)")
 
-// Catch SIGTERM (delivered by `launchctl bootout`) so we can restore the
-// system state before exiting. Default action would just kill us instantly.
+if initialState.enabled {
+    let setStatus = runPmset("1")
+    log("restored disablesleep=1 (exit \(setStatus))")
+}
+
+let service = ArgusService()
+let listener = NSXPCListener(machServiceName: ArgusHelper.machServiceName)
+listener.delegate = service
+listener.resume()
+log("xpc listener resumed on \(ArgusHelper.machServiceName)")
+
+// SIGTERM cleanup: drop pmset back to 0 unconditionally, even if the
+// persisted state was disabled. This guarantees `launchctl bootout` (or
+// uninstall) cannot leave the system in a wedged "won't sleep" state.
 signal(SIGTERM, SIG_IGN)
 let sigSource = DispatchSource.makeSignalSource(signal: SIGTERM, queue: .main)
 sigSource.setEventHandler {

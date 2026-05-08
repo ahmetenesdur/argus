@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var helper = HelperManager.shared
+    @StateObject private var xpc = XPCClient.shared
 
     var body: some View {
         VStack(alignment: .leading, spacing: 10) {
@@ -21,6 +22,21 @@ struct ContentView: View {
                 Text(helper.status.displayName)
             }
             .font(.caption)
+
+            Toggle("Prevent Sleep", isOn: Binding(
+                get: { xpc.enabled ?? false },
+                set: { newValue in
+                    Task { await xpc.setEnabled(newValue) }
+                }
+            ))
+            .toggleStyle(.switch)
+            .disabled(xpc.connectionState != .connected)
+
+            if let caption = connectionCaption {
+                Text(caption)
+                    .font(.caption2)
+                    .foregroundStyle(.secondary)
+            }
 
             HStack {
                 Button("Install") {
@@ -58,7 +74,32 @@ struct ContentView: View {
         }
         .padding(12)
         .frame(width: 280, alignment: .leading)
-        .onAppear { helper.refresh() }
+        .onAppear {
+            helper.refresh()
+        }
+        .onChange(of: helper.status) { newStatus in
+            switch newStatus {
+            case .installed:
+                xpc.connect()
+            case .notInstalled, .unknown:
+                xpc.disconnect()
+            }
+        }
+    }
+
+    private var connectionCaption: String? {
+        switch (helper.status, xpc.connectionState) {
+        case (.notInstalled, _):
+            return "Install helper to control sleep"
+        case (.installed, .connecting):
+            return "Connecting…"
+        case (.installed, .failed):
+            return "Helper not responding"
+        case (.installed, .disconnected):
+            return "Helper not responding"
+        default:
+            return nil
+        }
     }
 }
 

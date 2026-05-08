@@ -95,18 +95,23 @@ final class HelperManager: ObservableObject {
             "/usr/bin/plutil -insert Program -string '\(helperBinary)' '\(installedPlistPath)'",
             "/usr/sbin/chown root:wheel '\(installedPlistPath)'",
             "/bin/chmod 644 '\(installedPlistPath)'",
+            "/bin/mkdir -p '/Library/Application Support/Argus'",
+            "/usr/sbin/chown root:wheel '/Library/Application Support/Argus'",
+            "/bin/chmod 755 '/Library/Application Support/Argus'",
             "/bin/launchctl bootstrap system '\(installedPlistPath)'"
         ].joined(separator: " && ")
 
         await runAdmin(script: script)
     }
 
-    /// Uninstalls the helper: boot it out and remove the system-side plist.
+    /// Uninstalls the helper: boot it out, remove the system-side plist,
+    /// and wipe the persisted state directory (clean-slate on uninstall).
     /// The daemon receives SIGTERM and restores disablesleep=0 before exiting.
     func uninstall() async {
         let script = [
             "/bin/launchctl bootout system/\(label) > /dev/null 2>&1 || true",
-            "/bin/rm -f '\(installedPlistPath)'"
+            "/bin/rm -f '\(installedPlistPath)'",
+            "/bin/rm -rf '/Library/Application Support/Argus'"
         ].joined(separator: " && ")
 
         await runAdmin(script: script)

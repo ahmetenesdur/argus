@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		22CD74A32FAB5B95008F3326 /* argusd in CopyFiles */ = {isa = PBXBuildFile; fileRef = 223389F12FAB17180091288C /* argusd */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		22FA200000000000000000A2 /* ArgusHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA200000000000000000A1 /* ArgusHelperProtocol.swift */; };
+		22FA200000000000000000A3 /* ArgusHelperProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA200000000000000000A1 /* ArgusHelperProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,7 @@
 /* Begin PBXFileReference section */
 		223389F12FAB17180091288C /* argusd */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = argusd; sourceTree = BUILT_PRODUCTS_DIR; };
 		22505D912FAB10D100393EFF /* Argus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Argus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22FA200000000000000000A1 /* ArgusHelperProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgusHelperProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
@@ -105,6 +108,7 @@
 			children = (
 				22505D932FAB10D100393EFF /* Argus */,
 				223389F22FAB17180091288C /* argusd */,
+				22FA200000000000000000A0 /* Shared */,
 				22505D922FAB10D100393EFF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,6 +120,14 @@
 				223389F12FAB17180091288C /* argusd */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		22FA200000000000000000A0 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				22FA200000000000000000A1 /* ArgusHelperProtocol.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22FA200000000000000000A3 /* ArgusHelperProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22FA200000000000000000A2 /* ArgusHelperProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
