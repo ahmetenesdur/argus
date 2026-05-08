@@ -5,7 +5,6 @@
 //  Created by Ahmet Enes Dur on 06/05/2026.
 //
 
-import ServiceManagement
 import SwiftUI
 
 struct ContentView: View {
@@ -25,20 +24,21 @@ struct ContentView: View {
 
             HStack {
                 Button("Install") {
-                    helper.register()
+                    Task { await helper.install() }
                 }
-                .disabled(helper.status == .enabled)
+                .disabled(helper.status == .installed || helper.isWorking)
 
                 Button("Uninstall") {
-                    Task { await helper.unregister() }
+                    Task { await helper.uninstall() }
                 }
-                .disabled(helper.status == .notRegistered)
+                .disabled(helper.status == .notInstalled || helper.isWorking)
 
                 Spacer()
 
                 Button("Refresh") {
                     helper.refresh()
                 }
+                .disabled(helper.isWorking)
             }
 
             if let error = helper.lastError {

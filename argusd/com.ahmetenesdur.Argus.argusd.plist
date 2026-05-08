@@ -11,5 +11,11 @@
         <key>com.ahmetenesdur.Argus.argusd</key>
         <true/>
     </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/argusd.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/argusd.err.log</string>
 </dict>
 </plist>
