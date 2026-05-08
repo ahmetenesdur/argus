@@ -53,6 +53,7 @@ struct ContentView: View {
 
                 Button("Refresh") {
                     helper.refresh()
+                    xpc.connect()
                 }
                 .disabled(helper.isWorking)
             }
@@ -76,6 +77,11 @@ struct ContentView: View {
         .frame(width: 280, alignment: .leading)
         .onAppear {
             helper.refresh()
+            // Re-attempt the XPC connection every time the popover opens.
+            // Idempotent when already healthy; recovers from prior
+            // invalidation (e.g. the helper crashed and KeepAlive restarted
+            // it, leaving our side stuck on "Helper not responding").
+            xpc.connect()
         }
         .onChange(of: helper.status) { newStatus in
             switch newStatus {

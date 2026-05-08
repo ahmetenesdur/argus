@@ -29,7 +29,16 @@ final class XPCClient: ObservableObject {
     private init() {}
 
     func connect() {
-        guard connection == nil else { return }
+        // Skip only when an existing connection is verifiably healthy.
+        // Earlier versions guarded on `connection == nil`, but interruption
+        // and per-call error handlers leave the connection object in place
+        // even though it can no longer talk to the peer — the popover then
+        // sits on "Helper not responding" forever.
+        if case .connected = connectionState, connection != nil {
+            return
+        }
+        connection?.invalidate()
+        connection = nil
 
         let conn = NSXPCConnection(
             machServiceName: ArgusHelper.machServiceName,
@@ -75,9 +84,16 @@ final class XPCClient: ObservableObject {
     private func proxy() -> ArgusHelperProtocol? {
         connection?.remoteObjectProxyWithErrorHandler { [weak self] error in
             Task { @MainActor in
-                self?.connectionState = .failed(error.localizedDescription)
+                self?.handleConnectionError(error)
             }
         } as? ArgusHelperProtocol
+    }
+
+    private func handleConnectionError(_ error: Error) {
+        connectionState = .failed(error.localizedDescription)
+        connection?.invalidate()
+        connection = nil
+        enabled = nil
     }
 
     private func ping() async -> String? {
@@ -123,6 +139,9 @@ final class XPCClient: ObservableObject {
     }
 
     private func handleInterruption() {
+        connection?.invalidate()
+        connection = nil
         connectionState = .disconnected
+        enabled = nil
     }
 }
